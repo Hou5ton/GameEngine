@@ -4,7 +4,7 @@
 
 int main()
 {
-    GameEngine::sayHello();
+    GameEngine::checkGLFW();
 
     std::cin.get();
 }
