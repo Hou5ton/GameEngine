@@ -7,7 +7,7 @@ class App : public SimpleEngine::Application
 {
     virtual void on_update() override
     {
-        std::cout << " Update freame: " << frame++ << std::endl;
+       // std::cout << " Update freame: " << frame++ << std::endl;
     }
     int frame = 0;
 };
