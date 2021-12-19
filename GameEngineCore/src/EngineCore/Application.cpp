@@ -1,5 +1,3 @@
-#pragma once
-
 #include "EngineCore/Application.hpp"
 
 #include <GLFW/glfw3.h>
