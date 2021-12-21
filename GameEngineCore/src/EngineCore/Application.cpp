@@ -19,6 +19,12 @@ namespace GameEngine
     int Application::start(unsigned int window_width, unsigned int window_height, const char* title)
     {
         _pWindow = std::make_unique<Window>(title, window_width, window_height);
+        _pWindow->set_event_callback(
+            [](Event& event)
+            {
+                LOG_INFO("[EVENT] Changed sixe to {0}x{1}", event.width, event.height);
+            }
+        );
 
         while (true)
         {

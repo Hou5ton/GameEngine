@@ -4,6 +4,7 @@ set(ENGINE_PROJECT_NAME GameEngineCore)
 
 set(ENGINE_PUBLIC_INCLUDES 
 	includes/EngineCore/Application.hpp
+	includes/EngineCore/Event.hpp
 	includes/EngineCore/Log.hpp)
 
 set(ENGINE_PUBLIC_INCLUDES 
