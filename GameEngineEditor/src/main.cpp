@@ -3,7 +3,7 @@
 
 #include <EngineCore/Application.hpp>
 
-class App : public SimpleEngine::Application
+class App : public GameEngine::Application
 {
     virtual void on_update() override
     {

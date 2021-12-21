@@ -1,6 +1,8 @@
 #pragma once
 
-namespace SimpleEngine
+#include <memory>
+
+namespace GameEngine
 {
     class Application
     {
@@ -18,5 +20,8 @@ namespace SimpleEngine
 
         virtual void on_update() {}
 
+
+    private:
+        std::unique_ptr<class Window> _pWindow;
     };
 }
