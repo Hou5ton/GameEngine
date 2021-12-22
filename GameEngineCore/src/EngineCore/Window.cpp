@@ -4,6 +4,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <imgui/imgui.h>
+#include <imgui/backends/imgui_impl_opengl3.h>
+
 
 namespace GameEngine
 {
@@ -13,6 +16,10 @@ namespace GameEngine
         : _data({std::move(title), width, height})
     {
         int resultCode = init();
+
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGui_ImplOpenGL3_Init();
     }
 
     Window::~Window()
@@ -100,6 +107,20 @@ namespace GameEngine
     {
         glClearColor(1, 0, 0, 0);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        ImGuiIO& io = ImGui::GetIO();
+        io.DisplaySize.x = static_cast<float>(get_width());
+        io.DisplaySize.y = static_cast<float>(get_height());
+
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui::NewFrame();
+
+        ImGui::ShowDemoWindow();
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
         glfwSwapBuffers(_pWindow);
         glfwPollEvents();
     }
