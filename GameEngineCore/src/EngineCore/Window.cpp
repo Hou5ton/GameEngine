@@ -6,7 +6,7 @@
 
 #include <imgui/imgui.h>
 #include <imgui/backends/imgui_impl_opengl3.h>
-
+#include <imgui/backends/imgui_impl_glfw.h>
 
 namespace GameEngine
 {
@@ -20,6 +20,7 @@ namespace GameEngine
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGui_ImplOpenGL3_Init();
+        ImGui_ImplGlfw_InitForOpenGL(_pWindow, true);
     }
 
     Window::~Window()
@@ -105,7 +106,7 @@ namespace GameEngine
 
     void Window::on_update()
     {
-        glClearColor(1, 0, 0, 0);
+        glClearColor(_background_color[0], _background_color[1], _background_color[2], _background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT);
 
         ImGuiIO& io = ImGui::GetIO();
@@ -113,9 +114,15 @@ namespace GameEngine
         io.DisplaySize.y = static_cast<float>(get_height());
 
         ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
         ImGui::ShowDemoWindow();
+
+
+        ImGui::Begin("Background Color Window");
+        ImGui::ColorEdit4("Backcolor Color", _background_color);
+        ImGui::End();
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

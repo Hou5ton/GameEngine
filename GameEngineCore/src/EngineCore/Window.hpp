@@ -45,5 +45,6 @@ namespace GameEngine
 
         GLFWwindow* _pWindow = nullptr;
         WindowData _data;
+        float _background_color[4] = { 1.f,0.f,0.f, 0.f };
     };
 }
